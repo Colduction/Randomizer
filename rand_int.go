@@ -1,5 +1,13 @@
 package randomizer
 
+func RandInt(min, max int) int {
+	out := int(generateMapHashRandNumber())
+	if out < 0 {
+		out = -out
+	}
+	return min + out%(max-min)
+}
+
 func RandInt8(min, max int8) int8 {
 	out := int8(generateMapHashRandNumber())
 	if out < 0 {

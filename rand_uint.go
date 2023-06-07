@@ -1,5 +1,10 @@
 package randomizer
 
+func RandUint(min, max uint) uint {
+	out := uint(generateMapHashRandNumber())
+	return min + out%(max-min)
+}
+
 func RandUint8(min, max uint8) uint8 {
 	out := uint8(generateMapHashRandNumber())
 	return min + out%(max-min)
