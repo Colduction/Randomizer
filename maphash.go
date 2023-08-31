@@ -16,7 +16,8 @@ var (
 // Inspired from: https://qqq.ninja/blog/post/fast-threadsafe-randomness-in-go/#using-hashmaphash
 func generateMapHashRandNumber() uint64 {
 	hash := hashMapPool.Get().(*maphash.Hash)
-	defer hashMapPool.Put(hash)
 	hash.SetSeed(maphash.MakeSeed())
-	return hash.Sum64()
+	output := hash.Sum64()
+	hashMapPool.Put(hash)
+	return output
 }
